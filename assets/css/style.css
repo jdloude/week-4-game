@@ -1,0 +1,63 @@
+body{
+	background-color: #FCD56E;
+}
+h2 {
+	color: green;
+}
+.playerPic {
+	height: 150px;
+	width: 150px;
+}
+.playerSelect{
+	display: inline-flex;
+	width: 100%;
+}
+.char1{
+	height: 275px;
+	width: 200px;
+	border: solid black 1px;
+	text-align: center;
+	margin-left: 25px;
+
+}
+.char2{
+	height: 275px;
+	width: 200px;
+	border: solid black 1px;
+	text-align: center;
+	margin-left: 25px;
+
+}
+.char3{
+	height: 275px;
+	width: 200px;
+	border: solid black 1px;
+	text-align: center;
+	margin-left: 25px;
+
+}
+.char4{
+	height: 275px;
+	width: 200px;
+	border: solid black 1px;
+	text-align: center;
+	margin-left: 25px;
+}
+.enemyBox{
+	display: inline-flex;
+	margin-top: 10px;
+}
+.defenderBox {
+	clear: both;
+	float: right;
+}
+.attackBtn{
+	clear: both;
+	float: left;
+	margin-top: 20px;
+	margin-left: 55px;
+}
+.textContainer{
+	float: right;
+	margin: auto;
+}
