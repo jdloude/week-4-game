@@ -52,7 +52,7 @@ p{
 .defenderBox {
 	clear: both;
 	float: right;
-	margin-right: 650px;
+	margin-right: 100px;
 }
 .attackBtn{
 	clear: both;
@@ -62,5 +62,5 @@ p{
 }
 .textContainer{
 	float: right;
-	margin-left: 200px;
+	margin: auto;
 }
