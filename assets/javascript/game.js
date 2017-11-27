@@ -32,7 +32,8 @@ $('.char1').on('click', function(){
 
 		{
 
-			$('.char1').appendTo('.defenderBox').addClass("opp").css({'background-color' : 'black', 'color' : 'white'})
+			$('.char1').appendTo('.defenderBox').addClass("opp").css({'background-color' : 'black', 'color' : 'white'});
+			$('.opponent').html('Your opponent is Yoda');
 
 		}
 
@@ -61,7 +62,8 @@ $('.char2').on('click', function(){
 
 	{
 
-		$('.char2').appendTo('.defenderBox').addClass("opp").css({'background-color' : 'black', 'color' : 'white'})
+		$('.char2').appendTo('.defenderBox').addClass("opp").css({'background-color' : 'black', 'color' : 'white'});
+		$('.opponent').html('Your opponent is Jar Jar Binks');
 
 	}
 
@@ -90,7 +92,8 @@ $('.char3').on('click', function(){
 
 		{
 
-			$('.char3').appendTo('.defenderBox').addClass("opp").css({'background-color' : 'black', 'color' : 'white'})
+			$('.char3').appendTo('.defenderBox').addClass("opp").css({'background-color' : 'black', 'color' : 'white'});
+			$('.opponent').html('Your opponent is Darth Maul');
 			
 		}
 
@@ -119,7 +122,8 @@ $('.char4').on('click', function(){
 
 		{
 
-			$('.char4').appendTo('.defenderBox').addClass("opp").css({'background-color' : 'black', 'color' : 'white'})
+			$('.char4').appendTo('.defenderBox').addClass("opp").css({'background-color' : 'black', 'color' : 'white'});
+			$('.opponent').html('Your opponent is Boba Fett');
 			
 		}
 
@@ -166,9 +170,9 @@ $('.char4').on('click', function(){
 		$('.textContainer').html('<h3>' + 'You attacked ' + oppName + ' for ' + playerAttack + ' damage. '+ '<br>' + oppName + ' attacked you for ' + opponentCounterAttack + ' damage. ' + '</h3>');
 		
 		// doubles the players attack power
-		playerAttack = playerAttack * 2;
+		playerAttack = playerAttack * 1.5;
 
-		var newPlayerAttack = $('.main').attr('attack', playerAttack);
+		var newPlayerAttack = $('.main').attr('attack', playerAttack.toFixed());
 
 		if (playerHealthAfter <=0){
 

@@ -4,6 +4,9 @@ body{
 h2 {
 	color: green;
 }
+p{
+	font-size: 20px;
+}
 .playerPic {
 	height: 150px;
 	width: 150px;
@@ -45,11 +48,11 @@ h2 {
 }
 .enemyBox{
 	display: inline-flex;
-	margin-top: 10px;
 }
 .defenderBox {
 	clear: both;
 	float: right;
+	margin-right: 475px;
 }
 .attackBtn{
 	clear: both;
