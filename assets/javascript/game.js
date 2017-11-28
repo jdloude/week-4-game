@@ -6,6 +6,7 @@ $(document).ready(function(){
 	var jarJarCount = 0;
 	var darthMaulCount = 0;
 	var bobaFettCount = 0;
+	var defenderArea = false;
 
 // moves clicked player to approprate zones.
 
@@ -28,12 +29,12 @@ $('.char1').on('click', function(){
 	}
 
 	//places character 1 as a Opponent
-	else if (playerCount === false && yodaCount === 0)
+	else if (playerCount === false && yodaCount === 0 && defenderArea === false)
 
 		{
-
 			$('.char1').appendTo('.defenderBox').addClass("opp").css({'background-color' : 'black', 'color' : 'white'});
 			$('.opponent').html('Your opponent is Yoda');
+			defenderArea = true;
 
 		}
 
@@ -58,12 +59,12 @@ $('.char2').on('click', function(){
 	}
 
 	//places character 2 as a Opponent
-	else if (playerCount === false && jarJarCount === 0)
-
+	else if (playerCount === false && jarJarCount === 0 && defenderArea === false)
 	{
 
 		$('.char2').appendTo('.defenderBox').addClass("opp").css({'background-color' : 'black', 'color' : 'white'});
 		$('.opponent').html('Your opponent is Jar Jar Binks');
+		defenderArea = true;
 
 	}
 
@@ -88,12 +89,13 @@ $('.char3').on('click', function(){
 	}
 
 	//places character 3 as a Opponent
-	else if (playerCount === false && darthMaulCount === 0)
+	else if (playerCount === false && darthMaulCount === 0 && defenderArea === false)
 
 		{
 
 			$('.char3').appendTo('.defenderBox').addClass("opp").css({'background-color' : 'black', 'color' : 'white'});
 			$('.opponent').html('Your opponent is Darth Maul');
+			defenderArea = true;
 			
 		}
 
@@ -118,21 +120,27 @@ $('.char4').on('click', function(){
 	}
 
 	//places character 4 as a Opponent
-	else if (playerCount === false && bobaFettCount === 0)
-
-		{
+	else if (playerCount === false && bobaFettCount === 0 && defenderArea === false)
 
 			$('.char4').appendTo('.defenderBox').addClass("opp").css({'background-color' : 'black', 'color' : 'white'});
 			$('.opponent').html('Your opponent is Boba Fett');
+			defenderArea = true;
 			
-		}
-
-	});
+		});
 
 //================================================================
 
 	$('.attackBtn').click(function()
 	{ 
+		if(defenderArea === false){
+
+		$('.textContainer').html('<h3>' + 'You have not selected an enemy to attack. Please select a character to continue.' + '</h3>');
+		$('.attackBtn').off('click');
+
+		}
+
+		else if (defenderArea === true){	
+
 		// get opponents name attribute
 		var oppName = $('.opp').attr('characterName');
 
@@ -187,9 +195,11 @@ $('.char4').on('click', function(){
 		}
 
 		else if (opponentHealthAfter <=0){
+
 			$('.opp').remove();
 			$('.textContainer').html('<h3>' + 'You defeated ' + oppName + '!' + '<br>' + 'Please select another opponent.' + '</h3>');
 			enemiesDefeated++;
+			defenderArea = false;
 
 			if(enemiesDefeated === 3){
 				var endGame = confirm ('You have won!');
@@ -202,6 +212,7 @@ $('.char4').on('click', function(){
 				}
 			}
 
+		}
 		}
 
 	});
