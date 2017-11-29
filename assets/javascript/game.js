@@ -151,64 +151,71 @@ $(document).ready(function(){
 	$('.attackBtn').click(function()
 
 	{
+			// If statement to evaluate if the defender box is empty
+			if(defenderArea === false){
 
-		if(defenderArea === false){
+				$('.textContainer').html('<h3>' + 'You have not selected an enemy to attack. Please select a opponent to continue.' + '</h3>');
+				$('.attackBtn').off('click');
 
-			$('.textContainer').html('<h3>' + 'You have not selected an enemy to attack. Please select a opponent to continue.' + '</h3>');
-			$('.attackBtn').off('click');
-
-		}
+			}
 
 	$('.attackBtn').click(function()
+
 		{ 
+			// If statement to evaluate if the defender box has an opponent
 			if (defenderArea === true){
 
-				// get opponents name attribute
+				// Gets the opponents name attribute
 				var oppName = $('.opp').attr('characterName');
 
-				//	get player health attribute
+				//	Gets the player health attribute
 				var playerHealth = $('.main').attr('health');
 
-				// get player attack attribute
+				// Gets the player attack attribute
 				var playerAttack = $('.main').attr('attack');
 
-				//	get opponent health attribute
+				//	Gets the opponent health attribute
 				var opponentHealth = $('.opp').attr('health');
 
-				// get opponents counter attack attribute
+				// Gets the opponents counter attack attribute
 				var opponentCounterAttack = $('.opp').attr('counterAttack');
 
-				// makes player health set to starting health - opponents counter attack
+				// Makes the player health set to starting health - opponents counter attack
 				var playerHealthAfter = playerHealth - opponentCounterAttack;
 
-				// makes opponents health set to starting health - player attack
+				// Makes opponents health set to starting health - player attack
 				var opponentHealthAfter = opponentHealth - playerAttack;
 
-				// sets new value for player health in DOM
+				// Sets new value for player health in DOM
 				var player1Health = $('.main').attr('health', playerHealthAfter);
 
-				// sets new value for opponent health in DOM
+				// Sets new value for opponent health in DOM
 				var opponent1Health = $('.opp').attr('health', opponentHealthAfter);
 
-				// changes player health in DOM
+				// Changes player health in DOM
 				$('.main p').html($('.main').attr('health'));
 
-				// changes opponents health in DOM
+				// Changes opponents health in DOM
 				$('.opp p').html($('.opp').attr('health'));
 
-				//displays the damage information of the players
+				// Displays the damage information of the players
 				$('.textContainer').html('<h3>' + 'You attacked ' + oppName + ' for ' + playerAttack + ' damage. '+ '<br>' + oppName + ' attacked you for ' + opponentCounterAttack + ' damage. ' + '</h3>');
 		
-				// doubles the players attack power
+				// Increases the players attack power by some value
 				playerAttack = playerAttack * 1.5;
 
+				// Sets the variable newPlayerAttack to the attack attribute on selected character. rounded to the nearest whole number.
 				var newPlayerAttack = $('.main').attr('attack', playerAttack.toFixed());
 
+					// If statement to evaluate if player has lost the game
 					if (playerHealthAfter <=0){
 
 						var endGame = confirm ('You have lost please try again!');
+
+						// Turns off the attack button so no more damage can be applied
 						$('.attackBtn').off('click');
 
+							// If statment to reload the page on a lose
 							if (endGame === true){
 
 								location.reload();
@@ -218,15 +225,27 @@ $(document).ready(function(){
 
 					else if (opponentHealthAfter <=0){
 
+						// Removes opponent after health is at or below zero
 						$('.opp').remove();
+
+						// Shows you who you have defeated
 						$('.textContainer').html('<h3>' + 'You defeated ' + oppName + '!' + '<br>' + 'Please select another opponent.' + '</h3>');
+						
+						// Increases the defeated variable so you can win
 						enemiesDefeated++;
+
+						// Resets the defender area so a new oponent can be selected
 						defenderArea = false;
 
+							// If statment to evaluate if you have defeated all enemies
 							if(enemiesDefeated === 3){
+
 								var endGame = confirm ('You have won!');
+
+								// Turns off the attack button so no more damage can be applied
 								$('.attackBtn').off('click');
 
+									// If statment to reload the page on a win
 									if (endGame === true){
 
 										location.reload();
