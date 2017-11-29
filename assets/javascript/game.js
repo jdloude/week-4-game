@@ -27,9 +27,9 @@ $(document).ready(function(){
 
 				// places the other players as enemies
 
-				$('.char2').appendTo('.enemyBox').css({'background-color' : 'white'});
-				$('.char3').appendTo('.enemyBox').css({'background-color' : 'white'});
-				$('.char4').appendTo('.enemyBox').css({'background-color' : 'white'});
+				$('.char2').appendTo('.enemies').css({'background-color' : 'white'});
+				$('.char3').appendTo('.enemies').css({'background-color' : 'white'});
+				$('.char4').appendTo('.enemies').css({'background-color' : 'white'});
 
 			}
 
@@ -62,9 +62,9 @@ $(document).ready(function(){
 
 				// places the other players as enemies
 
-				$('.char1').appendTo('.enemyBox').css({'background-color' : 'white'});
-				$('.char3').appendTo('.enemyBox').css({'background-color' : 'white'});
-				$('.char4').appendTo('.enemyBox').css({'background-color' : 'white'});
+				$('.char1').appendTo('.enemies').css({'background-color' : 'white'});
+				$('.char3').appendTo('.enemies').css({'background-color' : 'white'});
+				$('.char4').appendTo('.enemies').css({'background-color' : 'white'});
 
 			}
 
@@ -94,9 +94,9 @@ $(document).ready(function(){
 				playerCount = false;
 
 				// places the other players as enemies
-				$('.char1').appendTo('.enemyBox').css({'background-color' : 'white'});
-				$('.char2').appendTo('.enemyBox').css({'background-color' : 'white'});
-				$('.char4').appendTo('.enemyBox').css({'background-color' : 'white'});
+				$('.char1').appendTo('.enemies').css({'background-color' : 'white'});
+				$('.char2').appendTo('.enemies').css({'background-color' : 'white'});
+				$('.char4').appendTo('.enemies').css({'background-color' : 'white'});
 
 			}
 
@@ -128,9 +128,9 @@ $(document).ready(function(){
 
 				// places the other players as enemies
 
-				$('.char1').appendTo('.enemyBox').css({'background-color' : 'white'});
-				$('.char2').appendTo('.enemyBox').css({'background-color' : 'white'});
-				$('.char3').appendTo('.enemyBox').css({'background-color' : 'white'});
+				$('.char1').appendTo('.enemies').css({'background-color' : 'white'});
+				$('.char2').appendTo('.enemies').css({'background-color' : 'white'});
+				$('.char3').appendTo('.enemies').css({'background-color' : 'white'});
 
 			}
 
@@ -154,7 +154,7 @@ $(document).ready(function(){
 			// If statement to evaluate if the defender box is empty
 			if(defenderArea === false){
 
-				$('.textContainer').html('<h3>' + 'You have not selected an enemy to attack. Please select a opponent to continue.' + '</h3>');
+				$('.textContainer').html('<h3>' + 'You have not selected an enemy to attack. Please select a opponent to continue.' + '</h3>').css({'color' : 'yellow'});
 				$('.attackBtn').off('click');
 
 			}
@@ -199,16 +199,28 @@ $(document).ready(function(){
 				$('.opp p').html($('.opp').attr('health'));
 
 				// Displays the damage information of the players
-				$('.textContainer').html('<h3>' + 'You attacked ' + oppName + ' for ' + playerAttack + ' damage. '+ '<br>' + oppName + ' attacked you for ' + opponentCounterAttack + ' damage. ' + '</h3>');
+				$('.textContainer').html('<h3>' + 'You attacked ' + oppName + ' for ' + playerAttack + ' damage. '+ '<br>' + oppName + ' attacked you for ' + opponentCounterAttack + ' damage. ' + '</h3>').css({'color' : 'yellow'});
 		
 				// Increases the players attack power by some value
-				playerAttack = playerAttack * 1.5;
+				playerAttack = playerAttack * 1.25;
 
 				// Sets the variable newPlayerAttack to the attack attribute on selected character. rounded to the nearest whole number.
 				var newPlayerAttack = $('.main').attr('attack', playerAttack.toFixed());
 
-					// If statement to evaluate if player has lost the game
-					if (playerHealthAfter <=0){
+
+					if(opponentHealthAfter <= 75) {
+
+						$('.opp').css({'background-color' : 'red'});
+
+					}	
+
+					if (playerHealthAfter <= 75) {
+
+						$('.main').css({'background-color' : 'red'});
+
+					}
+
+					if (playerHealthAfter <= 0){
 
 						var endGame = confirm ('You have lost please try again!');
 
@@ -223,7 +235,7 @@ $(document).ready(function(){
 							}
 					}
 
-					else if (opponentHealthAfter <=0){
+					if (opponentHealthAfter <= 0){
 
 						// Removes opponent after health is at or below zero
 						$('.opp').remove();

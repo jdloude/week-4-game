@@ -1,5 +1,19 @@
 body{
-	background-color: #FCD56E;
+	background-color: black;
+}
+.headerImg{
+	height: 350px;
+	width: 100%;
+}
+.battleTag{
+	width: 100%;
+}
+h1{
+	background-color: black;
+	text-align: center;
+	color: yellow;
+	width: 100%;
+	height: 100px;
 }
 h2 {
 	color: green;
@@ -7,60 +21,55 @@ h2 {
 p{
 	font-size: 20px;
 }
-.playerPic {
-	height: 150px;
-	width: 150px;
+.playerPic{
+	height: 100px;
+	width: 100px;
 }
-.playerSelect{
-	display: inline-flex;
-	width: 100%;
+.playerSelect {
+	margin-bottom: 25px;
 }
+
 .char1{
-	height: 275px;
-	width: 200px;
+
 	border: solid black 1px;
 	text-align: center;
-	margin-left: 25px;
 
 }
 .char2{
-	height: 275px;
-	width: 200px;
+
 	border: solid black 1px;
 	text-align: center;
-	margin-left: 25px;
 
 }
 .char3{
-	height: 275px;
-	width: 200px;
+
 	border: solid black 1px;
 	text-align: center;
-	margin-left: 25px;
+
 
 }
 .char4{
-	height: 275px;
-	width: 200px;
+
 	border: solid black 1px;
 	text-align: center;
-	margin-left: 25px;
+
 }
-.enemyBox{
-	display: inline-flex;
-}
-.defenderBox {
-	clear: both;
-	float: right;
-	margin-right: 100px;
-}
+
 .attackBtn{
-	clear: both;
-	float: left;
-	margin-top: 20px;
-	margin-left: 55px;
-}
-.textContainer{
-	float: right;
+
 	margin: auto;
+}
+
+.textContainer{
+	margin-top: 20px;
+	text-align: center;
+}
+.main{
+	margin: auto;
+}
+.opp{
+	margin: auto;
+}
+.enemies {
+	display: inline-flex;
 }
